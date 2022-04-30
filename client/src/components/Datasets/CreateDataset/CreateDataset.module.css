@@ -1,0 +1,50 @@
+.container{
+    width: 100%;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.name{
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 2rem;
+}
+
+.description{
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    height: 100px;
+}
+
+.label{
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.submit{
+    box-sizing: border-box;
+    width: 100%;
+    margin: 10px 0;
+    font-size: 1.2rem;
+    padding: 10px 25px;
+    border-radius: 1.5rem;
+    outline: none;
+    border: none;
+    color: #fff;
+    background-color: #6FD600;
+    text-align: center;
+    transition: background-color 0.2s;
+}
+
+.submit:hover{
+    background-color: #6fd600a0;
+}
+
+.submit:active{
+    background-color: #61bb00;
+}

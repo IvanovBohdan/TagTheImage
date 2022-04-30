@@ -1,0 +1,19 @@
+.toolbar{
+    display: flex;
+    flex-direction: column;
+}
+
+.tool{
+    box-sizing: border-box;
+    width: 3rem;
+    height: 3rem;
+    padding: 0.5rem;
+}
+
+.tool:hover{
+    background-color: #D4F0B7;
+}
+
+.active{
+    border: 5px solid #6FD600;
+}
