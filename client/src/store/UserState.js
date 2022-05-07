@@ -1,8 +1,11 @@
 import { makeAutoObservable } from "mobx";
 
 class UserState {
-    username = localStorage.getItem('username') || null;
-    datasets = [];  
+    username = localStorage.getItem("username") || null;
+    datasets = [];
+    files = [];
+    images = [];
+    areas = [];
 
     constructor() {
         makeAutoObservable(this);
@@ -17,7 +20,19 @@ class UserState {
     }
 
     getDatasetById(id) {
-        return this.datasets.find(dataset => dataset._id == id);
+        return this.datasets.find((dataset) => dataset._id === id);
+    }
+
+    setFiles(files) {
+        this.files = Array.from(files);
+    }
+
+    setImages(images) {
+        this.images = images;
+    }
+
+    getImageById(id) {
+        return this.images.find((image) => image._id == id);
     }
 }
 

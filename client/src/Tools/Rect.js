@@ -1,15 +1,19 @@
-import {SVG, extend as SVGextend, Element as SVGElement} from '@svgdotjs/svg.js'
-import Tool from './Tool'
-import AreaState from '../store/AreaState';
+import {
+    SVG,
+    extend as SVGextend,
+    Element as SVGElement,
+} from "@svgdotjs/svg.js";
+import Tool from "./Tool";
+import CanvasState from "../store/CanvasState";
+import config from "../config";
 
 export default class Rect extends Tool {
-
     rect = true;
 
     constructor(canvas) {
-        super(canvas)
+        super(canvas);
         this.mouseDown = false;
-        this.listen()
+        this.listen();
     }
 
     listen() {
@@ -21,8 +25,10 @@ export default class Rect extends Tool {
     onMouseDown(e) {
         this.mouseDown = true;
         this.initialCords = { x: e.offsetX, y: e.offsetY };
-        this.rect = this.canvas.rect().attr({ fill: 'red' }).move(e.offsetX, e.offsetY);
-        AreaState.addArea(this.rect);
+        this.rect = this.canvas
+            .rect()
+            .attr(config.drawing)
+            .move(e.offsetX, e.offsetY);
     }
 
     onMouseMove(e) {
@@ -39,5 +45,6 @@ export default class Rect extends Tool {
 
     onMouseUp(e) {
         this.mouseDown = false;
+        CanvasState.addArea(this.rect, "rect");
     }
 }

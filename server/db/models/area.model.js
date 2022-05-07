@@ -1,33 +1,39 @@
-const db = require('../db');
+const db = require("../db");
 const schema = new db.Schema({
     type: {
         type: String,
         required: true,
-        unique: true
     },
     label: {
         type: String,
-        required: true
     },
     description: {
         type: String,
     },
     data: {
         type: Object,
+        required: true,
     },
-    tags: [{
-        type: String,
-    }],
+    tags: [
+        {
+            type: String,
+        },
+    ],
     image: {
         type: db.Schema.Types.ObjectId,
-        ref: 'Image'
+        ref: "Image",
+        required: true,
+    },
+    dataset: {
+        type: db.Schema.Types.ObjectId,
+        ref: "Dataset",
+        required: true,
     },
     user: {
         type: db.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    }
+        ref: "User",
+        required: true,
+    },
+});
 
-})
-
-module.exports = db.model('Area', schema);
+module.exports = db.model("Area", schema);

@@ -1,15 +1,19 @@
-import {SVG, extend as SVGextend, Element as SVGElement} from '@svgdotjs/svg.js'
-import Tool from './Tool'
-import AreaState from '../store/AreaState';
+import {
+    SVG,
+    extend as SVGextend,
+    Element as SVGElement,
+} from "@svgdotjs/svg.js";
+import Tool from "./Tool";
+import CanvasState from "../store/CanvasState";
+import config from "../config";
 
 export default class Circle extends Tool {
-
     circle = true;
 
     constructor(canvas) {
-        super(canvas)
+        super(canvas);
         this.mouseDown = false;
-        this.listen()
+        this.listen();
     }
 
     listen() {
@@ -20,19 +24,25 @@ export default class Circle extends Tool {
 
     onMouseDown(e) {
         this.mouseDown = true;
-        this.circle = this.canvas.circle().attr({ fill: 'red' }).move(e.offsetX, e.offsetY);
-        AreaState.addArea(this.circle);
+        this.circle = this.canvas
+            .circle()
+            .attr({...config.drawing})
+            .move(e.offsetX, e.offsetY);
     }
 
     onMouseMove(e) {
         if (this.mouseDown) {
             let circle = this.circle;
-            let radius = Math.sqrt(Math.pow(e.offsetX - circle.cx(), 2) + Math.pow(e.offsetY - circle.cy(), 2));
+            let radius = Math.sqrt(
+                Math.pow(e.offsetX - circle.cx(), 2) +
+                    Math.pow(e.offsetY - circle.cy(), 2)
+            );
             circle.radius(radius);
         }
     }
 
     onMouseUp(e) {
         this.mouseDown = false;
+        CanvasState.addArea(this.circle, "circle");
     }
 }

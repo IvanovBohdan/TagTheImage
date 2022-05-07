@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config');
 
 const isLoggedIn = (req, res, next) => {
+
     if(req.method === 'OPTIONS'){
         return next();
     }

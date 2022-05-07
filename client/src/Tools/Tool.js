@@ -1,3 +1,5 @@
+import CanvasState from "../store/CanvasState";
+
 export default class Tool {
 
     circle = false

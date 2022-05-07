@@ -1,15 +1,19 @@
-import {SVG, extend as SVGextend, Element as SVGElement} from '@svgdotjs/svg.js'
-import Tool from './Tool'
-import AreaState from '../store/AreaState';
+import {
+    SVG,
+    extend as SVGextend,
+    Element as SVGElement,
+} from "@svgdotjs/svg.js";
+import Tool from "./Tool";
+import CanvasState from "../store/CanvasState";
+import config from "../config";
 
 export default class Point extends Tool {
-
     point = true;
 
     constructor(canvas) {
-        super(canvas)
+        super(canvas);
         this.mouseDown = false;
-        this.listen()
+        this.listen();
     }
 
     listen() {
@@ -18,8 +22,11 @@ export default class Point extends Tool {
 
     onMouseDown(e) {
         this.mouseDown = true;
-        this.point = this.canvas.circle().attr({ fill: 'red' }).move(e.offsetX, e.offsetY).radius(5);
-        AreaState.addArea(this.point);
+        this.point = this.canvas
+            .circle()
+            .attr({ fill: config.drawing.stroke })
+            .move(e.offsetX, e.offsetY)
+            .radius(5);
+        CanvasState.addArea(this.point, "point");
     }
-
 }

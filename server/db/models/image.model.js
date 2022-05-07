@@ -1,59 +1,64 @@
-const db = require('../db');
+const db = require("../db");
 
 const imageData = new db.Schema({
     filename: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     filetype: {
         type: String,
     },
     path: {
         type: String,
-        required: true
+        required: true,
     },
     width: {
         type: Number,
-        required: true
     },
     height: {
         type: Number,
-        required: true
     },
-    size: Number
-})
+    size: Number,
+});
 
 const schema = new db.Schema({
     image: {
         type: imageData,
-        required: true
+        required: true,
     },
     url: {
         type: String,
-        required: true
+        required: true,
     },
     dataset: {
         type: db.Schema.Types.ObjectId,
-        ref: 'Dataset'
+        ref: "Dataset",
+        required: true,
+    },
+    title: {
+        type: String,
     },
     description: {
         type: String,
-        required: true
     },
-    areas: [{
-        type: db.Schema.Types.ObjectId,
-        ref: 'Area'
-    }],
-    tags: [{
-        type: String,
-        default: []
-    }],
+    areas: [
+        {
+            type: db.Schema.Types.ObjectId,
+            ref: "Area",
+        },
+    ],
+    tags: [
+        {
+            type: String,
+            default: [],
+        },
+    ],
     user: {
         type: db.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    }
-})
+        ref: "User",
+        required: true,
+    },
+});
 
-module.exports = db.model('Image', schema);
+module.exports = db.model("Image", schema);

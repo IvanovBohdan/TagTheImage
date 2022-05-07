@@ -1,0 +1,59 @@
+.container {
+    width: 300px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container input[type="text"] {
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    width: 100%;
+    outline: none;
+}
+
+.container textarea {
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    width: 100%;
+    outline: none;
+    resize: vertical;
+}
+
+.delete_btn {
+    background-color: #ff5d5d;
+    margin: 5px 0;
+    border: none;
+    color: #fff;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.delete_btn:hover {
+    background-color: #ff1f44;
+}
+
+.delete_btn:active {
+    background-color: #fc748a;
+}
+
+.save_btn {
+    background-color: #49d62d;
+    margin: 5px 0;
+    border: none;
+    color: #fff;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.save_btn:hover {
+    background-color: rgb(31, 255, 80);
+}
+
+.save_btn:active {
+    background-color: rgb(116, 252, 161);
+}
